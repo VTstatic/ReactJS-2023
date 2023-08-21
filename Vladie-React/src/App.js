@@ -17,6 +17,7 @@ function App() {
   };
   const resetCount = () => {
     setCount(0);
+    alert("ZERO");
   };
 return (
     <div className="App">
