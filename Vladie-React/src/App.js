@@ -1,74 +1,115 @@
 import './App.css';
-//import { User } from './User';
+//use state
+import { useState } from 'react';
+
+//exercise
+//increase,decrease and reset Number
 
 function App() {
-    //const age = 18;
-    //const isGreen = true;
-    //const names = ["Vladimir","Lenie Rose","Liam Vleir"," Vynce Skyler","Tabuyo"]
-    const planet = [
-          { name: "Mars",  isGasEmitting: false },
-          { name: "Earth",  isGasEmitting: false },
-          { name: "Jupiter",  isGasEmitting: true },
-          { name: "Venus",  isGasEmitting: false },
-          { name: "Neptune",  isGasEmitting: true },
-          { name: "Uranus",  isGasEmitting: true },
-        ];
-
-      //showing names and selection
-      return (
-      <div className="App">
-      {planet.map (
-        (planet, key) => planet.isGasEmitting && <h1> {planet.name}</h1>
-        //notgas
-        //(planet, key) => !planet.isGasEmitting && <h1> {planet.name}</h1>
-      )}
-      </div>
-    );
-}
-    // method 1
-    /*
-    if (age >= 18) {
-      return <h1> OVER AGED! </h1>;
-    } else {
-      return <div className="App">
-      UNDER AGED!
-      </div>;
-    }
-    */
-
-    //method 2
-   /*
-    return (
-      <div className="App">
-      {age >= 18 ? <h1>OVER AGE</h1> : <h1>UNDER AGE!</h1> }
-      </div>
-    );
-    */
-
-    //method 3 boolean
-    /*
-    return (
-      <div className="App">  
-      {age >= 18 ? <h1>OVER AGE</h1> : <h1>UNDER AGE!</h1> }
-        <h1 style={{ color: isGreen ? "green" : "red"}}> THIS HAS COLOR </h1>
-        
-
-      {isGreen && <button style={{color: 'green'}}> GREEN BUTTON </button>}
-
-      {names.map ((name, key) => {
-          return <h1 key={key}> {name} </h1>
-          }
-        )
-      }
-
-      </div>
-    );
-     */
-    
-
-   
+  const [count, setCount] = useState(0);
   
-   
+
+  const increaseAge = () => {
+    setCount(count+1);
+  };
+  const decreaseAge = () => {
+    setCount(count-1);
+  };
+  const resetAge = () => {
+    setCount(0);
+  };
+return (
+    <div className="App">
+      <div>
+      {count}
+      </div>
+      <button onClick={decreaseAge}>Decrease</button>
+      <button onClick={resetAge}>RESET</button>
+      <button onClick={increaseAge}>Increase</button>   
+    </div>
+
+  );
+}
+
+//input change value method 2 = Toggle Color
+// function App() {
+//   const [textColor, setTextColor] = useState(true);
+  
+//   return (
+//     <div className="App">
+//       <button onClick={() => {
+//         setTextColor(textColor === "white" ? "green" : "white");
+//           }}>
+//             SHOW/HIDE
+//       </button>
+//       <h1 style={{color: textColor}}>Hi my Name is Vladie</h1>
+      
+//     </div>
+
+//   );
+// }
+
+//input change value method 2 = Toggle show/hide
+// function App() {
+//   const [showText, setShowText] = useState(true);
+  
+//   return (
+//     <div className="App">
+//       <button onClick={() => {
+//         setShowText(!showText)
+//           }}>
+//             SHOW/HIDE
+//       </button>
+//       {showText && <h1>Hi my Name is Vladie</h1> }
+      
+//     </div>
+
+//   );
+// }
+
+//input change value method 1
+// function App() {
+//     const [inputValue, setInputValue] = useState();
+    
+//     const handleInputChange = (event) => {
+//       setInputValue(event.target.value);
+//     }
+//     return (
+//       <div className="App">
+//         <input type="text" onChange={handleInputChange} />
+//         {inputValue}
+        
+//       </div>
+
+//     );
+// }
+
+//increase,decrease and reset Number
+
+// function App() {
+//   const [age, setAge] = useState();
+  
+
+//   const increaseAge = () => {
+//     setAge(age+1);
+//   };
+//   const decreaseAge = () => {
+//     setAge(age-1);
+//   };
+//   const resetAge = () => {
+//     setAge(0);
+//   };
+// return (
+//     <div className="App">
+//       {age}
+//       <button onClick={increaseAge}> Increase AGE </button>
+//       <button onClick={decreaseAge}> Increase AGE </button>
+//       <button onClick={resetAge}> RESET </button>
+      
+//     </div>
+
+//   );
+// }
 
 
 export default App;
