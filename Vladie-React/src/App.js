@@ -9,13 +9,13 @@ function App() {
   const [count, setCount] = useState(0);
   
 
-  const increaseAge = () => {
+  const increaseCount = () => {
     setCount(count+1);
   };
-  const decreaseAge = () => {
+  const decreaseCount = () => {
     setCount(count-1);
   };
-  const resetAge = () => {
+  const resetCount = () => {
     setCount(0);
   };
 return (
@@ -23,9 +23,9 @@ return (
       <div>
       {count}
       </div>
-      <button onClick={decreaseAge}>Decrease</button>
-      <button onClick={resetAge}>RESET</button>
-      <button onClick={increaseAge}>Increase</button>   
+      <button onClick={decreaseCount}>Decrease</button>
+      <button onClick={resetCount}>RESET</button>
+      <button onClick={increaseCount}>Increase</button>   
     </div>
 
   );
