@@ -17,6 +17,7 @@ function App() {
   };
   const resetAge = () => {
     setCount(0);
+    alert("ZERO");
   };
 return (
     <div className="App">
