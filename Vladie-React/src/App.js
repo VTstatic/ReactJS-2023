@@ -1,116 +1,66 @@
 import './App.css';
-//use state
 import { useState } from 'react';
+import { Task } from './Task';
 
-//exercise
-//increase,decrease and reset Number
-
+//todo list with add, delete and complete button
 function App() {
-  const [count, setCount] = useState(0);
-  
+  const [todoList, setTodoList] = useState([]);
+  const [newTask, setNewTask] = useState("");
 
-  const increaseCount = () => {
-    setCount(count+1);
+  const handleChange = (event) => {
+    setNewTask(event.target.value)
   };
-  const decreaseCount = () => {
-    setCount(count-1);
+
+  //add task + array id
+  const addTask = () => {
+    const task = {
+      id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
+      taskName: newTask,
+      completed: false,
+    }
+    setTodoList([...todoList, task]);
   };
-  const resetCount = () => {
-    setCount(0);
-    alert("ZERO");
+
+  //delete task
+  const deleteTask = (id) => {
+    setTodoList(todoList.filter((task) => task.id !== id));
   };
+
+  //complete task
+  const completeTask = (id) => {
+    setTodoList(
+      todoList.map((task) => {
+        if (task.id === id) {
+          return {...task, completed: true };
+        } else {
+          return task;
+        }
+      })
+    );
+  };
+
+
 return (
     <div className="App">
-      <div>
-      {count}
-      </div>
-      <button onClick={decreaseCount}>Decrease</button>
-      <button onClick={resetCount}>RESET</button>
-      <button onClick={increaseCount}>Increase</button>   
+       
+       <div className="addTask">
+          <input onChange={handleChange}/>
+          <button onClick={addTask}>Add Task</button>
+       </div>
+      
+       <div className="list">
+         {todoList.map((task) => {
+            return <Task taskName={task.taskName}
+             id={task.id}
+             completed={task.completed}
+             deleteTask={deleteTask}
+             completeTask={completeTask}
+             />
+         })}
+       </div>
     </div>
 
   );
 }
-
-//input change value method 2 = Toggle Color
-// function App() {
-//   const [textColor, setTextColor] = useState(true);
-  
-//   return (
-//     <div className="App">
-//       <button onClick={() => {
-//         setTextColor(textColor === "white" ? "green" : "white");
-//           }}>
-//             SHOW/HIDE
-//       </button>
-//       <h1 style={{color: textColor}}>Hi my Name is Vladie</h1>
-      
-//     </div>
-
-//   );
-// }
-
-//input change value method 2 = Toggle show/hide
-// function App() {
-//   const [showText, setShowText] = useState(true);
-  
-//   return (
-//     <div className="App">
-//       <button onClick={() => {
-//         setShowText(!showText)
-//           }}>
-//             SHOW/HIDE
-//       </button>
-//       {showText && <h1>Hi my Name is Vladie</h1> }
-      
-//     </div>
-
-//   );
-// }
-
-//input change value method 1
-// function App() {
-//     const [inputValue, setInputValue] = useState();
-    
-//     const handleInputChange = (event) => {
-//       setInputValue(event.target.value);
-//     }
-//     return (
-//       <div className="App">
-//         <input type="text" onChange={handleInputChange} />
-//         {inputValue}
-        
-//       </div>
-
-//     );
-// }
-
-//increase,decrease and reset Number
-
-// function App() {
-//   const [age, setAge] = useState();
-  
-
-//   const increaseAge = () => {
-//     setAge(age+1);
-//   };
-//   const decreaseAge = () => {
-//     setAge(age-1);
-//   };
-//   const resetAge = () => {
-//     setAge(0);
-//   };
-// return (
-//     <div className="App">
-//       {age}
-//       <button onClick={increaseAge}> Increase AGE </button>
-//       <button onClick={decreaseAge}> Increase AGE </button>
-//       <button onClick={resetAge}> RESET </button>
-      
-//     </div>
-
-//   );
-// }
-
 
 export default App;

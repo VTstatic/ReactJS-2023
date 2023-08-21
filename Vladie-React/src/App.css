@@ -66,3 +66,8 @@
     transform: rotate(360deg);
   }
 }
+
+.addTask{
+  background-color: #015b26;
+  float: inherit;
+}
