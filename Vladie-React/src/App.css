@@ -7,9 +7,9 @@
   pointer-events: none;
 }
 
-@media{
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen{
+  .App-logo  {
+    animation: App-logo-spin infinite 5s linear;
   }
 }
 
@@ -30,9 +30,9 @@
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: scale(0.1, 0.1);
   }
   to {
-    transform: rotate(360deg);
+    transform: scale(1, 1);
   }
 }
